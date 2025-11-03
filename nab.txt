@@ -1,0 +1,83 @@
+import numpy as np
+import matplotlib.pyplot as plt
+class EpsilonGreedyAgent:
+def __init__(self, n_meals, epsilon=0.3, decay=0.95):
+self.n = n_meals
+self.epsilon = epsilon
+self.decay = decay
+self.estimates = np.zeros(n_meals)
+self.counts = np.zeros(n_meals)
+self.step = 0
+def select_meal(self):
+self.step += 1
+if self.step <= self.n:
+return self.step - 1
+if np.random.rand() < self.epsilon:
+return np.random.randint(self.n)
+return np.argmax(self.estimates)
+def update(self, meal, reward):
+self.counts[meal] += 1
+self.estimates[meal] += (reward - self.estimates[meal]) / self.counts[meal]
+self.epsilon *= self.decay
+def run_bandit(n_meals=5, n_restaurants=3, steps=25):
+agent = EpsilonGreedyAgent(n_meals)
+total_ratings = np.zeros((n_restaurants, n_meals))
+sum_ratings = np.zeros((n_restaurants, n_meals))
+print(f"Running Bandit with {n_meals} Meals across {n_restaurants} Restaurants.")
+for step in range(steps):
+meal = agent.select_meal()
+print(f"\nStep {step+1}: Agent recommends Meal {meal+1}")
+ratings = []
+for r in range(n_restaurants):
+while True:
+try:
+rating = int(input(f"Enter rating for Meal {meal+1} at Restaurant {r+1} (1–5): "))
+if 1 <= rating <= 5:
+ratings.append(rating)
+break
+else:
+print("Please enter a number between 1 and 5.")
+except ValueError:
+print("Invalid input. Enter an integer between 1 and 5.")
+reward = sum(1 for x in ratings if x == 5) / n_restaurants
+agent.update(meal, reward)
+for r in range(n_restaurants):
+total_ratings[r, meal] += 1
+sum_ratings[r, meal] += ratings[r]
+print("\n=== Results ===")
+avg_ratings_matrix = np.zeros((n_restaurants, n_meals))
+for r in range(n_restaurants):
+print(f"\nRestaurant {r+1}:")
+for m in range(n_meals):
+if total_ratings[r, m] > 0:
+avg = sum_ratings[r, m] / total_ratings[r, m]
+avg_ratings_matrix[r, m] = avg
+print(f" Meal {m+1}: {avg:.2f} average rating")
+else:
+avg_ratings_matrix[r, m] = 0
+print(f" Meal {m+1}: No ratings")
+# Simple bar plot per restaurant
+plt.figure(figsize=(15, 4))
+for r in range(n_restaurants):
+ax = plt.subplot(1, n_restaurants, r + 1)
+avg_meal_ratings = [
+sum_ratings[r, m] / total_ratings[r, m] if total_ratings[r, m] > 0 else 0
+for m in range(n_meals)
+]
+ax.bar(range(1, n_meals + 1), avg_meal_ratings, tick_label=[f"Meal {i+1}" for i in
+range(n_meals)])
+ax.set_ylim(1, 5)
+ax.set_title(f"Restaurant {r+1}")
+ax.set_xlabel("Meal")
+ax.set_ylabel("Average User Rating")
+ax.grid(True)
+plt.tight_layout()
+plt.show()
+highest_value = np.max(avg_ratings_matrix)
+result_indices = np.argwhere(avg_ratings_matrix == highest_value)[0]
+best_restaurant = result_indices[0] + 1 # +1 for human-readable index
+best_meal = result_indices[1] + 1
+print(f"\nThe Agent Suggests Meal {best_meal} in Restaurant {best_restaurant} (Highest Average
+Rating: {highest_value:.2f})")
+if __name__ == "__main__":
+run_bandit(n_meals=5, steps=20)

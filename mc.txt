@@ -1,0 +1,34 @@
+import numpy as np
+import matplotlib.pyplot as plt
+foods = ['Idli', 'Dosa', 'Pongal']
+food_to_idx = {food: i for i, food in enumerate(foods)}
+idx_to_food = {i: food for food, i in food_to_idx.items()}
+P = np.array([
+[0.0, 0.5, 0.5],
+[0.5, 0.0, 0.5],
+[0.5, 0.5, 0.0]
+])
+def simulate_markov_chain(start='Idli', days=20):
+current_idx = food_to_idx[start]
+history = [start]
+for _ in range(days - 1):
+next_idx = np.random.choice([0, 1, 2], p=P[current_idx])
+history.append(idx_to_food[next_idx])
+current_idx = next_idx
+return history
+start_food = input("Enter today's food (Idli/Dosa/Pongal): ").capitalize()
+if start_food not in foods:
+print("Invalid input.")
+else:
+days = 30
+result = simulate_markov_chain(start=start_food, days=days)
+print(f"\n Food prediction for next {days} days:")
+for i, food in enumerate(result, 1):
+print(f"Day {i}: {food}")
+counts = {f: result.count(f) for f in foods}
+plt.bar(counts.keys(), counts.values(), color=['orange', 'green', 'skyblue'])
+plt.title(f" Food Served in {days} Days")
+plt.ylabel("Count")
+for i, val in enumerate(counts.values()):
+plt.text(i, val + 0.2, str(val), ha='center')
+plt.show()

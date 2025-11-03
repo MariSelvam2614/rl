@@ -1,0 +1,73 @@
+1. Write a program to implement a Q-Learning agent to play Tic-Tac-Toe.(ql)
+2. Write a program to solve the N-Armed Bandit problem using the ?-greedy strategy.(nab)
+3. Write a program to model a Markov Decision Process (MDP) and demonstrate its state transitions and rewards.(mdp)
+4. Write a program to implement a Markov Chain for simple sequence prediction.(mc)
+5. Write a program to implement a Basic MDP Solver using Value Iteration.(mdps)
+6. Write a program to apply Monte Carlo Methods for prediction and control in a simple environment.(mcp)
+7. Write a program to implement TD(0) and Q-Learning algorithms for simple environments.(td)
+8. Write a program to perform Policy Evaluation for a given policy in a Markov Decision Process.(pe)
+9. Write a program to implement the SARSA algorithm for reinforcement learning.(sar)
+10. Write a program to implement a small Grid Game using Reinforcement Learning.(grid)
+
+
+
+
+
+
+
+ 
+INTERNAL EXAMINER                                                          EXTERNAL EXAMINER                                                                        
+
+
+
+
+
+
+1. Write a program to implement a Q-Learning agent to play Tic-Tac-Toe.
+2. Write a program to implement TD(0) and Q-Learning algorithms for simple environments.
+
+
+1. Write a program to solve the N-Armed Bandit problem using the ?-greedy strategy.
+2. Write a program to apply Monte Carlo Methods for prediction and control in a simple environment.
+
+
+1. Write a program to model a Markov Decision Process (MDP) and demonstrate its state transitions and rewards.
+2. Write a program to implement the SARSA algorithm for reinforcement learning.
+
+
+1. Write a program to implement a Markov Chain for simple sequence prediction.
+2. Write a program to implement a small Grid Game using Reinforcement Learning.
+
+
+1. Write a program to implement a Basic MDP Solver using Value Iteration.
+2. Write a program to perform Policy Evaluation for a given policy in a Markov Decision Process.
+
+
+1. Write a program to implement a Q-Learning agent to play Tic-Tac-Toe.
+2. Write a program to implement TD(0) and Q-Learning algorithms for simple environments.
+
+
+1. Write a program to solve the N-Armed Bandit problem using the ?-greedy strategy.
+ 2. Write a program to apply Monte Carlo Methods for prediction and control in a simple environment.
+
+
+1. Write a program to model a Markov Decision Process (MDP) and demonstrate its state transitions and rewards.
+2. Write a program to implement the SARSA algorithm for reinforcement learning.
+
+
+1. Write a program to implement a Markov Chain for simple sequence prediction.
+2. Write a program to implement a small Grid Game using Reinforcement Learning.
+
+1. Write a program to implement a Basic MDP Solver using Value Iteration.
+2. Write a program to perform Policy Evaluation for a given policy in a Markov Decision Process.
+
+1. Write a program to implement a Q-Learning agent to play Tic-Tac-Toe.
+2. Write a program to implement TD(0) and Q-Learning algorithms for simple environments.
+
+1. Write a program to solve the N-Armed Bandit problem using the ?-greedy strategy.
+2. Write a program to apply Monte Carlo Methods for prediction and control in a simple environment.
+
+
+1. Write a program to model a Markov Decision Process (MDP) and demonstrate its state transitions and rewards.
+2. Write a program to implement the SARSA algorithm for reinforcement learning.
+
